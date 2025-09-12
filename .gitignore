@@ -1,0 +1,32 @@
+# Zig build artifacts
+.zig-cache/
+zig-out/
+
+# Editor/IDE files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*~
+*.bak
+
+# Logs
+*.log
+
+# Ignore binaries
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+
+# Ignore test output
+/test-output/
