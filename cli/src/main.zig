@@ -1,4 +1,5 @@
 const std = @import("std");
+const builtin = @import("builtin");
 const shared = @import("shared");
 
 pub fn main() !void {
@@ -8,8 +9,12 @@ pub fn main() !void {
 
     // Read all input from stdin
     var input_buffer: [1024 * 1024]u8 = undefined;
-    const stdin_file = std.fs.File{ .handle = std.posix.STDIN_FILENO };
-    const bytes_read = try stdin_file.readAll(&input_buffer);
+    const stdin_handle = if (builtin.os.tag == .windows)
+        try std.os.windows.GetStdHandle(std.os.windows.STD_INPUT_HANDLE)
+    else
+        std.posix.STDIN_FILENO;
+    const stdin = std.fs.File{ .handle = stdin_handle };
+    const bytes_read = try stdin.readAll(&input_buffer);
     const input = try allocator.dupe(u8, input_buffer[0..bytes_read]);
     defer allocator.free(input);
 
