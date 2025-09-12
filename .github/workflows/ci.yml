@@ -32,9 +32,11 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup Zig
-        uses: mlugg/setup-zig@v1
-        with:
-          version: 0.15.1
+        run: |
+          wget -q https://ziglang.org/download/0.15.1/zig-linux-x86_64-0.15.1.tar.xz
+          tar -xf zig-linux-x86_64-0.15.1.tar.xz
+          sudo mv zig-linux-x86_64-0.15.1 /opt/zig
+          sudo ln -s /opt/zig/zig /usr/local/bin/zig
 
       - name: Verify Zig installation
         run: zig version
