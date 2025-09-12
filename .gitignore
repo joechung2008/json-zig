@@ -30,3 +30,6 @@ Thumbs.db
 
 # Ignore test output
 /test-output/
+
+# TypeScript (temporary)
+typescript
