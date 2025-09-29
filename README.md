@@ -14,20 +14,20 @@ MIT
 
 ### Prerequisites
 
-- Zig 0.15.1 or later
+- Zig 0.15.1
 
 ### Building
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/joechung2008/json-zig/json-zig.git
 cd json-zig
 
 # Build the project
 zig build
 
 # The CLI executable will be available at: ./zig-out/bin/cli
-# The library will be available at: ./zig-out/lib/libshared.a
+# The library will be available at: ./zig-out/lib/libshared.a or ./zig-out/lib/shared.lib
 ```
 
 ### Running Tests
@@ -39,9 +39,6 @@ zig build test
 # Run tests with detailed summary
 zig build test --summary all
 
-# Run tests for a specific file directly
-zig test lib/src/main.zig
-
 # Run with verbose build output
 zig build test --verbose
 
@@ -49,28 +46,18 @@ zig build test --verbose
 zig test lib/src/main.zig --test-filter "parse number"
 ```
 
-#### Test Output Examples
-
-**Silent success (default behavior):**
+Example output:
 
 ```bash
 $ zig build test
 # No output = all tests passed
-```
 
-**With summary information:**
-
-```bash
 $ zig build test --summary all
 Build Summary: 3/3 steps succeeded; 68/68 tests passed
 test success
 └─ run test 68 passed 1ms MaxRSS:1M
-   └─ compile test Debug native success 431ms MaxRSS:128M
-```
+  └─ compile test Debug native success 431ms MaxRSS:128M
 
-**Direct test runner:**
-
-```bash
 $ zig test lib/src/main.zig
 All 68 tests passed.
 ```
@@ -139,27 +126,4 @@ pub fn main() !void {
         }
     }
 }
-```
-
-## 🧪 Test Information
-
-Run tests with:
-
-```bash
-# Basic test run (silent on success)
-zig build test
-
-# Show test count and timing
-zig build test --summary all
-
-# Direct test execution with count
-zig test lib/src/main.zig
-
-# Filter specific tests
-zig test lib/src/main.zig --test-filter "parse"
-
-# Example output with summary:
-# Build Summary: 3/3 steps succeeded; 68/68 tests passed
-# test success
-# └─ run test 68 passed 14ms MaxRSS:1M
 ```
