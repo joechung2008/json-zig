@@ -127,3 +127,14 @@ pub fn main() !void {
     }
 }
 ```
+
+## ⚠️ Zig Language Server (zls) Compatibility Note
+
+If you use the Zig Language Server (zls) for editor integration, be aware:
+
+- As of this release, zls may only be available for Zig 0.15.0, not 0.15.1.
+- Using zls built for 0.15.0 with Zig 0.15.1 can result in false positive warnings or incomplete diagnostics.
+- If you encounter spurious warnings, either disable zls or temporarily use Zig 0.15.0 for best compatibility.
+- Monitor the zls project for updates supporting Zig 0.15.1.
+
+This does not affect building or running the project itself, only editor diagnostics and completions.
